@@ -3,60 +3,6 @@
 	"ignore": "test appengine",
 	"package": [
 		{
-			"checksumSHA1": "eXgjZrAsSlTnHXR2Ylo9z4p9w58=",
-			"path": "github.com/ClickHouse/clickhouse-go/lib/binary",
-			"revision": "6b1ba590788873fd6993f50f823bb90274a23ba5",
-			"revisionTime": "2019-11-11T18:17:50Z"
-		},
-		{
-			"checksumSHA1": "XAfQByvVby6TKUmdPMqKrWa2OPU=",
-			"path": "github.com/ClickHouse/clickhouse-go/lib/cityhash102",
-			"revision": "6b1ba590788873fd6993f50f823bb90274a23ba5",
-			"revisionTime": "2019-11-11T18:17:50Z"
-		},
-		{
-			"checksumSHA1": "TGxjsKmDjPFkoDCfF2+ZxOQq/8A=",
-			"path": "github.com/ClickHouse/clickhouse-go/lib/column",
-			"revision": "6b1ba590788873fd6993f50f823bb90274a23ba5",
-			"revisionTime": "2019-11-11T18:17:50Z"
-		},
-		{
-			"checksumSHA1": "/puAW2VEcJWJ6l6bd0SpT1R5vNk=",
-			"path": "github.com/ClickHouse/clickhouse-go/lib/data",
-			"revision": "6b1ba590788873fd6993f50f823bb90274a23ba5",
-			"revisionTime": "2019-11-11T18:17:50Z"
-		},
-		{
-			"checksumSHA1": "7Fmt5YlS2CQdGmxqxmfsd6HOl6E=",
-			"path": "github.com/ClickHouse/clickhouse-go/lib/leakypool",
-			"revision": "6b1ba590788873fd6993f50f823bb90274a23ba5",
-			"revisionTime": "2019-11-11T18:17:50Z"
-		},
-		{
-			"checksumSHA1": "CcWlgXAc2GW+quy0WxBLD07VZBI=",
-			"path": "github.com/ClickHouse/clickhouse-go/lib/lz4",
-			"revision": "6b1ba590788873fd6993f50f823bb90274a23ba5",
-			"revisionTime": "2019-11-11T18:17:50Z"
-		},
-		{
-			"checksumSHA1": "6kI3XMADIHpYaZQhl0+sew/fhXQ=",
-			"path": "github.com/ClickHouse/clickhouse-go/lib/protocol",
-			"revision": "6b1ba590788873fd6993f50f823bb90274a23ba5",
-			"revisionTime": "2019-11-11T18:17:50Z"
-		},
-		{
-			"checksumSHA1": "wLUiUCIOrsEhLWHpHi0Hsr+o7rM=",
-			"path": "github.com/ClickHouse/clickhouse-go/lib/types",
-			"revision": "6b1ba590788873fd6993f50f823bb90274a23ba5",
-			"revisionTime": "2019-11-11T18:17:50Z"
-		},
-		{
-			"checksumSHA1": "Ve71pmEcv0V5F4Kt2H4kSBuYbhI=",
-			"path": "github.com/ClickHouse/clickhouse-go/lib/writebuffer",
-			"revision": "6b1ba590788873fd6993f50f823bb90274a23ba5",
-			"revisionTime": "2019-11-11T18:17:50Z"
-		},
-		{
 			"checksumSHA1": "0rido7hYHQtfq3UJzVT5LClLAWc=",
 			"path": "github.com/beorn7/perks/quantile",
 			"revision": "37c8de3658fcb183f997c4e13e8337516ab753e6",
@@ -67,12 +13,6 @@
 			"path": "github.com/cespare/xxhash/v2",
 			"revision": "d7df74196a9e781ede915320c11c378c1b2f3a1f",
 			"revisionTime": "2019-11-14T17:47:13Z"
-		},
-		{
-			"checksumSHA1": "yV03NbQdXQW5nBxZ48zkFrWJZfU=",
-			"path": "github.com/clickhouse/clickhouse-go",
-			"revision": "6b1ba590788873fd6993f50f823bb90274a23ba5",
-			"revisionTime": "2019-11-11T18:17:50Z"
 		},
 		{
 			"checksumSHA1": "pQdQAyva/nOnQXh4sQLui5rvsbQ=",
