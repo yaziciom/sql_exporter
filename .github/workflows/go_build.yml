@@ -1,0 +1,28 @@
+# workflow name
+name: Generate release build
+
+# on events
+on:
+  release:
+    types: [published]
+
+# workflow tasks
+jobs:
+  releases-matrix:
+    name: Release Go Binary
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # build and publish in parallel: linux/386, linux/amd64, windows/386, windows/amd64, darwin/386, darwin/amd64
+        goos: [linux, windows, darwin]
+        goarch: [amd64]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: wangyoucao577/go-release-action@master
+        with:
+          project_path: ./cmd/sql_exporter/
+          binary_name: sql-exporter
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          goos: ${{ matrix.goos }}
+          build_flags: -v
+          goarch: ${{ matrix.goarch }}
