@@ -1,11 +1,11 @@
 # workflow name
-name: Generate release
+name: Generate release build
 
 # on events
 on:
   release:
     types:
-      - published
+      - created
 
 # workflow tasks
 jobs:
