@@ -3,7 +3,7 @@ name: Generate Release
 on:
   push:
     branches:
-      - feature/gomod
+      - master
 
 jobs:
   release-on-push:
