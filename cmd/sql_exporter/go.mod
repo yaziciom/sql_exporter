@@ -1,4 +1,4 @@
-module v1
+module github.com/yaziciom/sql_exporter/cmd/sql_exporter
 
 go 1.17
 
