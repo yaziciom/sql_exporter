@@ -3,7 +3,8 @@ name: Generate release build
 
 # on events
 on:
-  - release
+  release:
+    types: [published]
 
 # workflow tasks
 jobs:
