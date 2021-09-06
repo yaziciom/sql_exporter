@@ -3,9 +3,9 @@ name: Generate release
 
 # on events
 on:
-  push:
-    branches:
-      - feature/gomod
+  release:
+    types:
+      - published
 
 # workflow tasks
 jobs:
