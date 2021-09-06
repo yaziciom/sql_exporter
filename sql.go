@@ -5,12 +5,11 @@ import (
 	"database/sql"
 	"fmt"
 	"strings"
-
+	_ "github.com/vertica/vertica-sql-go"
 	_ "github.com/denisenkom/go-mssqldb"    // register the MS-SQL driver
 	_ "github.com/go-sql-driver/mysql"      // register the MySQL driver
 	log "github.com/golang/glog"
 	_ "github.com/lib/pq" // register the PostgreSQL driver
- 	_ "github.com/vertica/vertica-sql-go" // register the Vertica driver
 )
 
 // OpenConnection extracts the driver name from the DSN (expected as the URI scheme), adjusts it where necessary (e.g.
