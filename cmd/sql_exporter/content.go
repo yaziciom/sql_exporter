@@ -5,7 +5,7 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/free/sql_exporter"
+	"github.com/yaziciom/sql_exporter"
 )
 
 const (

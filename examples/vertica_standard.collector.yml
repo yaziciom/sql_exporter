@@ -1,0 +1,10 @@
+collector_name: vertica_standard
+
+metrics:
+  - metric_name: vertica_max_cpu_usage
+    type: gauge
+    help: 'Vertica max cpu usage metrics'
+    values: [MAX_CPU]
+    query: |
+      SELECT max(average_cpu_usage_percent) as MAX_CPU FROM v_monitor.cpu_usage
+      
