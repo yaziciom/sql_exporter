@@ -1,0 +1,68 @@
+# github.com/beorn7/perks v1.0.1
+## explicit; go 1.11
+github.com/beorn7/perks/quantile
+# github.com/cespare/xxhash/v2 v2.1.1
+## explicit; go 1.11
+github.com/cespare/xxhash/v2
+# github.com/denisenkom/go-mssqldb v0.0.0-20191001013358-cfbb681360f0
+## explicit; go 1.11
+github.com/denisenkom/go-mssqldb
+github.com/denisenkom/go-mssqldb/internal/cp
+github.com/denisenkom/go-mssqldb/internal/decimal
+github.com/denisenkom/go-mssqldb/internal/querytext
+# github.com/go-sql-driver/mysql v1.4.1-0.20191114115753-b4242bab7dc5
+## explicit; go 1.9
+github.com/go-sql-driver/mysql
+# github.com/golang-sql/civil v0.0.0-20190719163853-cb61b32ac6fe
+## explicit
+github.com/golang-sql/civil
+# github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
+## explicit
+github.com/golang/glog
+# github.com/golang/protobuf v1.3.3-0.20191022195553-ed6926b37a63
+## explicit; go 1.12
+github.com/golang/protobuf/proto
+# github.com/lib/pq v1.2.1-0.20191011153232-f91d3411e481
+## explicit
+github.com/lib/pq
+github.com/lib/pq/oid
+github.com/lib/pq/scram
+# github.com/matttproud/golang_protobuf_extensions v1.0.2-0.20181231171920-c182affec369
+## explicit; go 1.9
+github.com/matttproud/golang_protobuf_extensions/pbutil
+# github.com/prometheus/client_golang v1.2.2-0.20191024231915-333f01cef0d6
+## explicit; go 1.11
+github.com/prometheus/client_golang/prometheus
+github.com/prometheus/client_golang/prometheus/internal
+github.com/prometheus/client_golang/prometheus/promhttp
+# github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4
+## explicit; go 1.9
+github.com/prometheus/client_model/go
+# github.com/prometheus/common v0.7.1-0.20191017122555-b5fe7d854c42
+## explicit; go 1.11
+github.com/prometheus/common/expfmt
+github.com/prometheus/common/internal/bitbucket.org/ww/goautoneg
+github.com/prometheus/common/model
+github.com/prometheus/common/version
+# github.com/prometheus/procfs v0.0.7
+## explicit; go 1.12
+github.com/prometheus/procfs
+github.com/prometheus/procfs/internal/fs
+github.com/prometheus/procfs/internal/util
+# github.com/vertica/vertica-sql-go v1.1.0
+## explicit; go 1.13
+github.com/vertica/vertica-sql-go
+github.com/vertica/vertica-sql-go/common
+github.com/vertica/vertica-sql-go/logger
+github.com/vertica/vertica-sql-go/msgs
+github.com/vertica/vertica-sql-go/parse
+github.com/vertica/vertica-sql-go/rowcache
+# golang.org/x/crypto v0.0.0-20191117063200-497ca9f6d64f
+## explicit; go 1.11
+golang.org/x/crypto/md4
+# golang.org/x/sys v0.0.0-20191119060738-e882bf8e40c2
+## explicit; go 1.12
+golang.org/x/sys/windows
+# gopkg.in/yaml.v2 v2.2.6
+## explicit
+gopkg.in/yaml.v2
