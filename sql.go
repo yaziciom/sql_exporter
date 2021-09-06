@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"fmt"
 	"strings"
-    _ "github.com/vertica/vertica-sql-go" // register the Vertica driver
+ 	_ "github.com/vertica/vertica-sql-go" // register the Vertica driver
 	_ "github.com/denisenkom/go-mssqldb"    // register the MS-SQL driver
 	_ "github.com/go-sql-driver/mysql"      // register the MySQL driver
 	log "github.com/golang/glog"
