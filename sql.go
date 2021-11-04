@@ -76,7 +76,7 @@ func OpenConnection(ctx context.Context, logContext, dsn string, maxConns, maxId
 			return nil, err
 		}
 	}
-
+	log.Infof("%s", dsn)
 	conn.SetMaxIdleConns(maxIdleConns)
 	conn.SetMaxOpenConns(maxConns)
 
