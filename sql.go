@@ -66,6 +66,8 @@ func OpenConnection(ctx context.Context, logContext, dsn string, maxConns, maxId
 	)
 	go func() {
 		conn, err = sql.Open(driver, dsn)
+		return nil, fmt.Errorf("dsn right now: %s", dsn)
+
 		close(ch)
 	}()
 	select {
@@ -76,7 +78,6 @@ func OpenConnection(ctx context.Context, logContext, dsn string, maxConns, maxId
 			return nil, err
 		}
 	}
-	log.Infof("%s", dsn)
 	conn.SetMaxIdleConns(maxIdleConns)
 	conn.SetMaxOpenConns(maxConns)
 
