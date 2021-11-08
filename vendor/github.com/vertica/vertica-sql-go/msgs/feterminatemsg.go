@@ -1,6 +1,6 @@
 package msgs
 
-// Copyright (c) 2019-2021 Micro Focus or one of its affiliates.
+// Copyright (c) 2020-2021 Micro Focus or one of its affiliates.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -32,21 +32,14 @@ package msgs
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-type BEEmptyQueryResponseMsg struct {
+type FETerminateMsg struct {
 }
 
-// CreateFromMsgBody
-func (m *BEEmptyQueryResponseMsg) CreateFromMsgBody(buf *msgBuffer) (BackEndMsg, error) {
-
-	res := &BEParseCompleteMsg{}
-
-	return res, nil
+// Flatten docs
+func (m *FETerminateMsg) Flatten() ([]byte, byte) {
+	return []byte{}, 'X'
 }
 
-func (m *BEEmptyQueryResponseMsg) String() string {
-	return "EmptyQueryResponse"
-}
-
-func init() {
-	registerBackEndMsgType('I', &BEEmptyQueryResponseMsg{})
+func (m *FETerminateMsg) String() string {
+	return "Terminate"
 }

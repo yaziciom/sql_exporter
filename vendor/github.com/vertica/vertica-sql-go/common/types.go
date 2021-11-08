@@ -1,6 +1,6 @@
 package common
 
-// Copyright (c) 2019 Micro Focus or one of its affiliates.
+// Copyright (c) 2019-2021 Micro Focus or one of its affiliates.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -40,8 +40,13 @@ const (
 	ColTypeFloat64       uint32 = 7
 	ColTypeChar          uint32 = 8
 	ColTypeVarChar       uint32 = 9
+	ColTypeDate          uint32 = 10
+	ColTypeTime          uint32 = 11
 	ColTypeTimestamp     uint32 = 12
 	ColTypeTimestampTZ   uint32 = 13
+	ColTypeInterval      uint32 = 14
+	ColTypeIntervalYM    uint32 = 114
+	ColTypeTimeTZ        uint32 = 15
 	ColTypeNumeric       uint32 = 16
 	ColTypeVarBinary     uint32 = 17
 	ColTypeUUID          uint32 = 20
@@ -65,35 +70,104 @@ type ParameterType struct {
 	Nullable     bool
 }
 
-func ColumnTypeString(typeOID uint32) string {
+func ColumnTypeString(typeOID uint32, typeModifier int32) string {
 	switch typeOID {
 	case ColTypeBoolean:
-		return "boolean"
+		return "BOOL"
 	case ColTypeInt64:
-		return "integer"
+		return "INT"
 	case ColTypeFloat64:
-		return "float"
+		return "FLOAT"
 	case ColTypeChar:
-		return "char"
+		return "CHAR"
 	case ColTypeVarChar:
-		return "varchar"
+		return "VARCHAR"
+	case ColTypeDate:
+		return "DATE"
+	case ColTypeTime:
+		return "TIME"
 	case ColTypeTimestamp:
-		return "timestamp"
+		return "TIMESTAMP"
 	case ColTypeTimestampTZ:
-		return "timestamptz"
-	case ColTypeVarBinary:
-		return "varbinary"
-	case ColTypeUUID:
-		return "uuid"
-	case ColTypeLongVarChar:
-		return "long varchar"
-	case ColTypeLongVarBinary:
-		return "long varbinary"
-	case ColTypeBinary:
-		return "binary"
+		return "TIMESTAMPTZ"
+	case ColTypeInterval, ColTypeIntervalYM:
+		return "INTERVAL " + getIntervalRange(typeOID, typeModifier)
+	case ColTypeTimeTZ:
+		return "TIMETZ"
 	case ColTypeNumeric:
-		return "numeric"
+		return "NUMERIC"
+	case ColTypeVarBinary:
+		return "VARBINARY"
+	case ColTypeUUID:
+		return "UUID"
+	case ColTypeLongVarChar:
+		return "LONG VARCHAR"
+	case ColTypeLongVarBinary:
+		return "LONG VARBINARY"
+	case ColTypeBinary:
+		return "BINARY"
 	}
 
 	return fmt.Sprintf("unknown column type oid: %d", typeOID)
+}
+
+func getIntervalRange(typeOID uint32, typeModifier int32) string {
+	const (
+		INTERVAL_MASK_MONTH      = 1 << 17
+		INTERVAL_MASK_YEAR       = 1 << 18
+		INTERVAL_MASK_DAY        = 1 << 19
+		INTERVAL_MASK_HOUR       = 1 << 26
+		INTERVAL_MASK_MINUTE     = 1 << 27
+		INTERVAL_MASK_SECOND     = 1 << 28
+		INTERVAL_MASK_YEAR2MONTH = INTERVAL_MASK_YEAR | INTERVAL_MASK_MONTH
+		INTERVAL_MASK_DAY2HOUR   = INTERVAL_MASK_DAY | INTERVAL_MASK_HOUR
+		INTERVAL_MASK_DAY2MIN    = INTERVAL_MASK_DAY | INTERVAL_MASK_HOUR | INTERVAL_MASK_MINUTE
+		INTERVAL_MASK_DAY2SEC    = INTERVAL_MASK_DAY | INTERVAL_MASK_HOUR | INTERVAL_MASK_MINUTE | INTERVAL_MASK_SECOND
+		INTERVAL_MASK_HOUR2MIN   = INTERVAL_MASK_HOUR | INTERVAL_MASK_MINUTE
+		INTERVAL_MASK_HOUR2SEC   = INTERVAL_MASK_HOUR | INTERVAL_MASK_MINUTE | INTERVAL_MASK_SECOND
+		INTERVAL_MASK_MIN2SEC    = INTERVAL_MASK_MINUTE | INTERVAL_MASK_SECOND
+	)
+
+	ranges_ym := []struct {
+		mask int32
+		name string
+	}{
+		{INTERVAL_MASK_YEAR2MONTH, "YEAR TO MONTH"},
+		{INTERVAL_MASK_YEAR, "YEAR"},
+		{INTERVAL_MASK_MONTH, "MONTH"},
+	}
+	ranges_ds := []struct {
+		mask int32
+		name string
+	}{
+		{INTERVAL_MASK_DAY2SEC, "DAY TO SECOND"},
+		{INTERVAL_MASK_DAY2MIN, "DAY TO MINUTE"},
+		{INTERVAL_MASK_DAY2HOUR, "DAY TO HOUR"},
+		{INTERVAL_MASK_DAY, "DAY"},
+		{INTERVAL_MASK_HOUR2SEC, "HOUR TO SECOND"},
+		{INTERVAL_MASK_HOUR2MIN, "HOUR TO MINUTE"},
+		{INTERVAL_MASK_HOUR, "HOUR"},
+		{INTERVAL_MASK_MIN2SEC, "MINUTE TO SECOND"},
+		{INTERVAL_MASK_MINUTE, "MINUTE"},
+		{INTERVAL_MASK_SECOND, "SECOND"},
+	}
+
+	switch typeOID {
+	case ColTypeIntervalYM:
+		for _, val := range ranges_ym {
+			if (typeModifier & val.mask) == val.mask {
+				return val.name
+			}
+		}
+		return "YEAR TO MONTH"
+	case ColTypeInterval:
+		for _, val := range ranges_ds {
+			if (typeModifier & val.mask) == val.mask {
+				return val.name
+			}
+		}
+		return "DAY TO SECOND"
+	default:
+		return fmt.Sprintf("invalid column type oid: %d", typeOID)
+	}
 }
